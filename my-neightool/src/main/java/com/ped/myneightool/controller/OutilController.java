@@ -14,52 +14,60 @@ import com.ped.myneightool.model.Outil;
 import com.ped.myneightool.service.OutilService;
 
 @Controller
-@RequestMapping("/outil")
+@RequestMapping("/tool")
 public class OutilController {
 
 	private static final Logger LOGGER = Logger
 			.getLogger(OutilController.class);
 
 	@Autowired
-	private OutilService outilService;
+	private OutilService toolService;
 
-	@RequestMapping(value="/outils", method = RequestMethod.GET)
+	@RequestMapping(value="/tools", method = RequestMethod.GET)
 	@ResponseBody
-	public Outils loadUsers() {
+	public Outils loadTools() {
 
-		Outils outils = new Outils();
-		outils.setOutils(outilService.getAll());
+		Outils tools = new Outils();
+		tools.setOutils(toolService.getAll());
 		LOGGER.info("--- user list retrieved ---");
-		return outils;
+		return tools;
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
 	@ResponseBody
-	public Outil addUser(@RequestBody Outil outil) {
+	public Outil addTool(@RequestBody Outil tool) {
 
-		Outil newOutil = outilService.create(outil);
+		Outil newOutil = toolService.create(tool);
 
-		LOGGER.info("--- New user saved ---");
+		LOGGER.info("--- New tool saved ---");
 		return newOutil;
 	}
 
-	@RequestMapping(value = "/{outilId}", method = RequestMethod.GET)
+	@RequestMapping(value = "/{toolId}", method = RequestMethod.GET)
 	@ResponseBody
-	public Outil findUser(@PathVariable(value = "outilId") Integer outilId) {
+	public Outil findTool(@PathVariable(value = "toolId") Integer toolId) {
 
-		Outil userFound = outilService.find(outilId);
+		Outil userFound = toolService.find(toolId);
 
-		LOGGER.info("--- user found ---");
+		LOGGER.info("--- tool found ---");
 		return userFound;
 	}
 	
 	@RequestMapping(value="/update", method = RequestMethod.POST)
 	@ResponseBody
-	public Outil updateUser(@RequestBody Outil outil) {
+	public Outil updateTool(@RequestBody Outil tool) {
 
-		Outil newOutil = outilService.update(outil);
+		Outil newOutil = toolService.update(tool);
 
 		LOGGER.info("--- update made ---");
 		return newOutil;
+	}
+	
+	@RequestMapping(value="/delete/{toolId}", method = RequestMethod.DELETE)
+	@ResponseBody
+	public void deleteTool(@PathVariable(value = "toolId") Integer toolId) {
+		toolService.delete(toolId);
+
+		LOGGER.info("--- tool deleted ---");
 	}
 }

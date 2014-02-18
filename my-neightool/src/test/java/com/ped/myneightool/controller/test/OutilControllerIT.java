@@ -75,4 +75,13 @@ public class OutilControllerIT {
 		Assert.assertNotNull(newOutil);
 		Assert.assertTrue("Outil".equals(newOutil.getNom()));
 	}
+	
+	@Test
+	public void deleteOutilTest() {
+		Outil newOutil = createNewOutil();
+		Outil outilCreated = restTemplate.postForObject(REST_SERVICE_URL, newOutil, Outil.class);
+		
+		String restServiceUrlFind = REST_SERVICE_URL + "/delete/" + outilCreated.getId();
+		restTemplate.delete(restServiceUrlFind);
+	}
 }

@@ -9,8 +9,8 @@
 		<!-- <class>com.ped.myneightool.model.Adresse</class>
 		<class>com.ped.myneightool.model.Connection</class>
 		<class>com.ped.myneightool.model.Emprunt</class>
-		<class>com.ped.myneightool.model.Message</class>
-		<class>com.ped.myneightool.model.Outil</class> -->
+		<class>com.ped.myneightool.model.Message</class> -->
+		<class>com.ped.myneightool.model.Outil</class>
 		<class>com.ped.myneightool.model.Utilisateur</class>
 
 		<!-- <properties>
