@@ -36,9 +36,9 @@ public class Outil implements Serializable {
 
 	private int caution;
 
-	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="utilisateur_id")
-	private Utilisateur utilisateur;
+//	@ManyToOne(fetch=FetchType.LAZY)
+//	@JoinColumn(name="utilisateur_id")
+//	private Utilisateur utilisateur;
 
 	public Outil(){
 
@@ -47,7 +47,7 @@ public class Outil implements Serializable {
 	public Outil(Utilisateur utilisateur,String nom, String description,
 			boolean disponible, String categorie, int caution) {
 
-		this.utilisateur=utilisateur;
+		//this.utilisateur=utilisateur;
 		//this.utilisateur.addOutil(this);
 
 		this.nom = nom;
@@ -57,15 +57,15 @@ public class Outil implements Serializable {
 		this.caution = caution;
 	}
 
-	@XmlElement
-	public Utilisateur getUtilisateur(){
-		return this.utilisateur;
-	}
-
-	public void setUtilisateur(Utilisateur utilisateur){
-		this.utilisateur=utilisateur;
-		//utilisateur.addOutil(this);
-	}
+//	@XmlElement
+//	public Utilisateur getUtilisateur(){
+//		return this.utilisateur;
+//	}
+//
+//	public void setUtilisateur(Utilisateur utilisateur){
+//		this.utilisateur=utilisateur;
+//		//utilisateur.addOutil(this);
+//	}
 
 	@XmlElement(name = "id")
 	public int getId() {

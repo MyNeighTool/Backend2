@@ -4,8 +4,11 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
+import javax.xml.bind.annotation.XmlRootElement;
 
+@SuppressWarnings("serial")
 @Embeddable
+@XmlRootElement(name="adresse")
 public class Adresse implements Serializable {
 	
 	private String rue;

@@ -63,7 +63,7 @@ public class UtilisateurController {
 		return newUtilisateur;
 	}
 	
-	@RequestMapping(value="/delete/{utilisateurId}", method = RequestMethod.GET)
+	@RequestMapping(value="/delete/{utilisateurId}", method = RequestMethod.DELETE)
 	@ResponseBody
 	public void deleteUser(@PathVariable(value = "utilisateurId") Integer utilisateurId) {
 		utilisateurService.delete(utilisateurId);

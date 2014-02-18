@@ -78,12 +78,12 @@ public class UtilisateurControllerIT {
 		Assert.assertTrue("Bouygues".equals(newUser.getNom()));
 	}
 
-//	@Test
-//	public void deleteUtilisateurTest() {
-//		Utilisateur newUtilisateur = createNewUtilisateur();
-//		Utilisateur utilisateurCreated = restTemplate.postForObject(REST_SERVICE_URL, newUtilisateur, Utilisateur.class);
-//		
-//		String restServiceUrlFind = REST_SERVICE_URL + "/delete/" + utilisateurCreated.getId();
-//		restTemplate.getForObject(restServiceUrlFind, void.class);
-//	}
+	@Test
+	public void deleteUtilisateurTest() {
+		Utilisateur newUtilisateur = createNewUtilisateur();
+		Utilisateur utilisateurCreated = restTemplate.postForObject(REST_SERVICE_URL, newUtilisateur, Utilisateur.class);
+		
+		String restServiceUrlFind = REST_SERVICE_URL + "/delete/" + utilisateurCreated.getId();
+		restTemplate.delete(restServiceUrlFind);
+	}
 }

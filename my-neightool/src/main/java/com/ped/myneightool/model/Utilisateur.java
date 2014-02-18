@@ -2,8 +2,6 @@ package com.ped.myneightool.model;
 
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -30,11 +28,9 @@ public class Utilisateur implements Serializable {
 	private Connection connexion;
 	private String mail;
 	private String telephone;
-	private List<Outil> outils;
+	//private List<Outil> outils;
 	
-	public Utilisateur() {
-		outils = new ArrayList<Outil>();
-	}
+	public Utilisateur() { }
 	
 	public Utilisateur(String nom, String prenom, Connection connexion,
 			String mail, String telephone) {
@@ -99,14 +95,4 @@ public class Utilisateur implements Serializable {
 	public void setTelephone(String telephone) {
 		this.telephone = telephone;
 	}
-
-	public List<Outil> getOutils() {
-		return outils;
-	}
-	
-	public void setOutils(List<Outil> outils) {
-		this.outils = outils;
-	}
-	
-
 }

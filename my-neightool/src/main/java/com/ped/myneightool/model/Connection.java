@@ -12,16 +12,17 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 
-/*@SuppressWarnings("serial")
-@XmlRootElement
+@SuppressWarnings("serial")
+/*@XmlRootElement
 @XmlAccessorType(XmlAccessType.PROPERTY)
-@Entity*/
-@Embeddable
+@Entity
+@Embeddable*/
 public class Connection implements Serializable {
 
 	/*@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)*/
-	private int id;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int id;*/
+
 	@Column(nullable = false)
 	private String login;
 	@Column(nullable = false)
