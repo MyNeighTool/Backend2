@@ -2,8 +2,9 @@ package com.ped.myneightool.model;
 
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -19,29 +20,27 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlAccessorType(XmlAccessType.PROPERTY)
 @Entity
 public class Utilisateur implements Serializable {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
-	/*@Id
-	@GeneratedValue(strategy = GenerationType.TABLE)
-	@Column(name = "idUtilisateur")
-	protected int id;*/
 	private String nom;
 	private String prenom;
-	//private Connection connexion;
+	private Connection connexion;
 	private String mail;
 	private String telephone;
+	private List<Outil> outils;
 	
 	public Utilisateur() {
+		outils = new ArrayList<Outil>();
 	}
 	
 	public Utilisateur(String nom, String prenom, Connection connexion,
 			String mail, String telephone) {
-		super();
 		this.nom = nom;
 		this.prenom = prenom;
-		//this.connexion = connexion;
+		this.connexion = connexion;
 		this.mail = mail;
 		this.telephone = telephone;
 	}
@@ -49,15 +48,19 @@ public class Utilisateur implements Serializable {
 	/**
 	 * @return the id
 	 */
-	/*@XmlElement(name = "id")
+	@XmlElement(name = "id")
 	public int getId() {
 		return id;
-	}*/
+	}
+	
+	public void setId(int id) {
+		this.id = id;
+	}
 	
 	public String getNom() {
 		return nom;
-	}
-	
+	}	
+
 	public void setNom(String nom) {
 		this.nom = nom;
 	}
@@ -71,14 +74,13 @@ public class Utilisateur implements Serializable {
 		this.prenom = prenom;
 	}
 
-	
-//	public Connection getConnexion() {
-//		return connexion;
-//	}
-//
-//	public void setConnexion(Connection connexion) {
-//		this.connexion = connexion;
-//	}
+	public Connection getConnexion() {
+		return connexion;
+	}
+
+	public void setConnexion(Connection connexion) {
+		this.connexion = connexion;
+	}
 
 	
 	public String getMail() {
@@ -98,6 +100,13 @@ public class Utilisateur implements Serializable {
 		this.telephone = telephone;
 	}
 
+	public List<Outil> getOutils() {
+		return outils;
+	}
+	
+	public void setOutils(List<Outil> outils) {
+		this.outils = outils;
+	}
 	
 
 }

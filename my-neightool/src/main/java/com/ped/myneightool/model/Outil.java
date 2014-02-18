@@ -14,13 +14,14 @@ import javax.persistence.FetchType;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 
+@SuppressWarnings("serial")
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @XmlRootElement(name = "outil")
 public class Outil implements Serializable {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
 	private int idProprio;
@@ -66,7 +67,7 @@ public class Outil implements Serializable {
 		//utilisateur.addOutil(this);
 	}
 
-	@XmlElement
+	@XmlElement(name = "id")
 	public int getId() {
 		return id;
 	}

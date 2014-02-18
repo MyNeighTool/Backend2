@@ -11,6 +11,7 @@ import org.springframework.web.client.RestTemplate;
 import com.ped.myneightool.dto.wrapper.Utilisateurs;
 import com.ped.myneightool.model.Utilisateur;
 
+@SuppressWarnings("deprecation")
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "/spring-beans-test.xml", "/applicationContext-servlet-test.xml" })
 public class UtilisateurControllerIT {
@@ -56,28 +57,33 @@ public class UtilisateurControllerIT {
 
 		Utilisateur newUtilisateur = createNewUtilisateur();
 		Utilisateur utilisateurCreated = restTemplate.postForObject(REST_SERVICE_URL, newUtilisateur, Utilisateur.class);
-		/*Utilisateur utilisateurCreated = restTemplate.postForObject(REST_SERVICE_URL + "/utilisateur", 
-				newUtilisateur, Utilisateur.class); */
-		
-		//Assert.assertEquals(utilisateurCreated.getId(), 23);
-		/*String restServiceUrlFind = REST_SERVICE_URL + "/" + utilisateurCreated.getId();
+
+		String restServiceUrlFind = REST_SERVICE_URL + "/" + utilisateurCreated.getId();
 		Utilisateur utilisateurFound = restTemplate.getForObject(restServiceUrlFind, Utilisateur.class);
 
-		Assert.assertNotNull(utilisateurFound);
-		Assert.assertEquals(utilisateurFound.getId(), utilisateurCreated.getId());*/
+		Assert.assertNotNull(utilisateurFound.getId());
+		Assert.assertEquals(utilisateurFound.getId(), utilisateurCreated.getId());		 
 	}
-	
-	@SuppressWarnings("deprecation")
+
 	@Test
 	public void updateUserTest() {
 		Utilisateur user = createNewUtilisateur();
 		Utilisateur userUpdated = user;
-		user.setNom("Bouygues");
-		user.setPrenom("Christophe");
-		
-		Utilisateur newUser = restTemplate.postForObject(REST_SERVICE_URL + "/update", user, Utilisateur.class);
-		
+		userUpdated.setNom("Bouygues");
+		userUpdated.setPrenom("Christophe");
+
+		Utilisateur newUser = restTemplate.postForObject(REST_SERVICE_URL + "/update", userUpdated, Utilisateur.class);
+
 		Assert.assertNotNull(newUser);
 		Assert.assertTrue("Bouygues".equals(newUser.getNom()));
 	}
+
+//	@Test
+//	public void deleteUtilisateurTest() {
+//		Utilisateur newUtilisateur = createNewUtilisateur();
+//		Utilisateur utilisateurCreated = restTemplate.postForObject(REST_SERVICE_URL, newUtilisateur, Utilisateur.class);
+//		
+//		String restServiceUrlFind = REST_SERVICE_URL + "/delete/" + utilisateurCreated.getId();
+//		restTemplate.getForObject(restServiceUrlFind, void.class);
+//	}
 }

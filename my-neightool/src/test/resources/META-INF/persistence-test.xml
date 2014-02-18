@@ -13,12 +13,12 @@
 		<class>com.ped.myneightool.model.Outil</class> -->
 		<class>com.ped.myneightool.model.Utilisateur</class>
 
-		<properties>
-			<!-- auto detection des class java -->
+		<!-- <properties>
+			auto detection des class java
 			<property name="hibernate.archive.autodetection" value="class, hbm" />
 			<property name="hibernate.hbm2ddl.auto" value="validate" />
 
-			<!-- Affiche les logs SQL -->
+			Affiche les logs SQL
 			<property name="hibernate.format_sql" value="true" />
 			<property name="use_sql_comments" value="true" />
 			<property name="hibernate.show_sql" value="true" />
@@ -26,7 +26,7 @@
 
 			<property name="hibernate.dialect" value="${jdbc.dialect}" />
 
-			<!-- Cree les tables si elles existent pas, sinon les met a jour -->
+			Cree les tables si elles existent pas, sinon les met a jour
 			<property name="hibernate.hbm2ddl.auto" value="update" />
 
 			<property name="hibernate.connection.driver_class" value="${jdbc.driver}" />
@@ -35,12 +35,19 @@
 			<property name="hibernate.connection.password" value="${jdbc.password}" />
 
 
-			<!-- Configuration pool de connexion C3p0 -->
+			Configuration pool de connexion C3p0
 			<property name="hibernate.c3p0.min_size" value="5" />
 			<property name="hibernate.c3p0.max_size" value="20" />
 			<property name="hibernate.c3p0.timeout" value="300" />
 			<property name="hibernate.c3p0.max_statements" value="50" />
 			<property name="hibernate.c3p0.idle_test_period" value="3000" />
+		</properties> -->
+		<properties>
+		    <property name="hibernate.show_sql" value="true" />
+		    <property name="hibernate.format_sql" value="true"/>
+			<property name="hibernate.dialect" value="org.hibernate.dialect.HSQLDialect" />
+			<property name="hibernate.hbm2ddl.auto" value="create" />
+			<property name="hibernate.show_sql" value="true" />
 		</properties>
 	</persistence-unit>
 	

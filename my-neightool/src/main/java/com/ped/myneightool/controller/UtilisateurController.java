@@ -62,4 +62,12 @@ public class UtilisateurController {
 		LOGGER.info("--- update made ---");
 		return newUtilisateur;
 	}
+	
+	@RequestMapping(value="/delete/{utilisateurId}", method = RequestMethod.GET)
+	@ResponseBody
+	public void deleteUser(@PathVariable(value = "utilisateurId") Integer utilisateurId) {
+		utilisateurService.delete(utilisateurId);
+
+		LOGGER.info("--- user deleted ---");
+	}
 }
